@@ -49,7 +49,7 @@ Procedemos a hacer Nmap a la ip de la máquina
 
 [![Screenshot-from-2024-02-21-22-56-00.png](https://i.postimg.cc/430CmCdt/Screenshot-from-2024-02-21-22-56-00.png)](https://postimg.cc/4Kp2SSpN)
 
-En este caso el puerto abierto es 21/TCP ftp vsftpd 3.0.3. Por lo tanto, procedemos a acceder con ftp, en este caso el usuario es anonymous y la contraseña root
+En este caso el puerto abierto es 21/TCP ftp vsftpd 3.0.3. Por lo tanto, procedemos a acceder con ftp, en el cual, el usuario es anonymous y la contraseña root
 
 [![Screenshot-from-2024-02-21-23-00-15.png](https://i.postimg.cc/ZnTLmnSL/Screenshot-from-2024-02-21-23-00-15.png)](https://postimg.cc/N9zX7gLy)
 
