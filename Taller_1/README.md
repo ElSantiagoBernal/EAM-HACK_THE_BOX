@@ -41,4 +41,24 @@ procedemos a listar y obtener la bandera
 
 [![Screenshot-from-2024-02-21-22-41-36.png](https://i.postimg.cc/hvh2khg7/Screenshot-from-2024-02-21-22-41-36.png)](https://postimg.cc/PvsbZXCt)
 
+# NMAP A MAQUINA FAWN
+
+![image](https://github.com/ElSantiagoBernal/EAM-HACK_THE_BOX/assets/100774275/758cdf3f-8ceb-4f81-a7ff-6b08408a9f08)
+
+Procedemos a hacer Nmap a la ip de la máquina
+
+[![Screenshot-from-2024-02-21-22-56-00.png](https://i.postimg.cc/430CmCdt/Screenshot-from-2024-02-21-22-56-00.png)](https://postimg.cc/4Kp2SSpN)
+
+En este caso el puerto abierto es 21/TCP ftp vsftpd 3.0.3. Por lo tanto, procedemos a acceder con ftp, en este caso el usuario es anonymous y la contraseña root
+
+[![Screenshot-from-2024-02-21-23-00-15.png](https://i.postimg.cc/ZnTLmnSL/Screenshot-from-2024-02-21-23-00-15.png)](https://postimg.cc/N9zX7gLy)
+
+Una vez iniciada la sesión obtenemos el archivo flag con: get flag.txt
+
+[![Screenshot-from-2024-02-21-23-03-00.png](https://i.postimg.cc/nhQB6BmJ/Screenshot-from-2024-02-21-23-03-00.png)](https://postimg.cc/RW4Wt3Gs)
+
+En este caso quedará guardado localmente en un archivo.
+
+
+
 
