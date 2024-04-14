@@ -219,7 +219,7 @@ Y este nos indica que el servicio de base de datos no se esta corriendo porque f
 
 Procedemos a crearlo de nuevo y a asignarle los permisos que tenia antes. 
 
-![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/71f93abd-df4a-4b39-b6c2-c4a4d6de85a0)
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/8bbb8ce8-794e-4c38-9cb2-55d05e8d35b9)
 
 Una vez creado le damos permisos de ejecución ejecutamos el archivo syscheck como super usuario, donde nos aparecerá lo siguiente:
 
