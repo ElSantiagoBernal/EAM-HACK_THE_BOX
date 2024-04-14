@@ -193,8 +193,65 @@ Procedemos a preguntar quienes somos y en que directorio estamos ubicados, para 
 
 ![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/a0781191-ff1f-42ca-8f31-f9d5aed300e2)
 
+Procedemos a leer el archivo 'initdb.sh' que es el contiene la configuración de la db
 
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/77bd4eb4-35f7-4b2a-ba3b-e4a36df1a06b)
 
+Donde: 
+
+- 'chmod +x /bin/bash' otorga permisos de ejecución al archivo /bin/bash, que es el intérprete de comandos Bash. Con este permiso, cualquier usuario puede ejecutar el archivo /bin/bash como un programa.
+
+- 'chmod u+s /bin/bash' establece el bit setuid en el archivo /bin/bash. Cuando un archivo tiene el bit setuid activado, se ejecuta con los privilegios del propietario del archivo, en lugar de los privilegios del usuario que lo está ejecutando.
+
+Como no sabemos si el bit seuid esta activado procedemos a eliminar la carpeta y a ejecutar el siguiente comando para la lista de permisos de sudo (superusuario) que tiene el usuario actual
+
+```
+sudo -l
+```
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/9a47475d-0253-43bb-98be-fc9d00183e57)
+
+Donde no indica que el usuario dvir tiene permiso para ejecutar el comando /usr/bin/syscheck en el sistema headless sin necesidad de ingresar su contraseña. Para saber que contiene el directiorio procedemos a leerlo 
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/464b291d-66b2-4871-a8f9-fa748e86b6fd)
+
+Y este nos indica que el servicio de base de datos no se esta corriendo porque falta el archivo 'initdb.sh' el que habiamos eliminado hace un instante 
+
+Procedemos a crearlo de nuevo y a asignarle los permisos que tenia antes. 
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/71f93abd-df4a-4b39-b6c2-c4a4d6de85a0)
+
+Una vez creado le damos permisos de ejecución ejecutamos el archivo syscheck como super usuario, donde nos aparecerá lo siguiente:
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/5baa7f95-5649-4861-8716-583a278525fa)
+
+Luego esperamos unos segundos y ejecutamos el siguiente comando para iniciar un nuevo shell Bash con todas las configuraciones y variables de entorno que normalmente se cargarían al iniciar sesión en un sistema
+
+```
+/bin/bash -p 
+```
+
+Y ejecutamos el comando id para saber la identidad del usuario actual
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/2d659f74-124b-47da-9004-3bc6305b91a2)
+
+Lo que nos dice esto, es que indica que el usuario dvir tiene permisos normales de usuario (uid=1000), su grupo principal es dvir (gid=1000), pero actualmente tiene privilegios de superusuario (euid=0). Además, pertenece al grupo users y su UID, GID y nombre de usuario y grupo coinciden.
+
+Procedemos a entrar al directorio de home para luego listar y ver que hay otro con el nombre de usuario actual, si listamos lo que tiene, podremos ver un archivo llamado 'user.txt', y si lo leemos podremos ver la bandera del usuario 
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/5c1a123f-d876-4a47-b7cf-60b79f36be64)
+
+y si procedemos a entarr al directorio de inicio del usuario root y listamos, podremos ver que hay un archivo llamado root.txt donde estará la bandera del usuario root 
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/b962f4cc-7a6b-4161-8df3-bd9be49d66da)
+
+Si la ingresamos a hack the box podremos ver que efectivamente son las banderas que se debian encontrar 
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/0f8763b7-ba97-470b-b559-5c8f18a0fabe)
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/e2a15589-94d3-4aed-bbf9-2b13006f1c5d)
+
+![image](https://github.com/ElSantiagoBernal/HACK-THE-BOX/assets/100774275/7b6ffab7-2dc8-417d-ae72-813f7081ccd7)
 
 
 
